@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // 目标 JS 版本（根据项目需求调整）
+    "target": "ES6",
+    // 模块系统（与项目一致，如 CommonJS/ESNext）
+    "module": "CommonJS",
+    // 输出目录（编译后的 JS 文件存放位置）
+    "outDir": "./dist",
+    // 源文件目录（TS/JS 源码位置）
+    "rootDir": "./src",
+    // 允许混合使用 JS 和 TS 文件（关键：支持逐步迁移）
+    "allowJs": true,
+    // 检查 JS 文件的类型错误（可选，建议开启）
+    "checkJs": false,
+    // 生成类型声明文件（如果需要对外提供类型）
+    "declaration": true,
+    // 类型声明文件输出目录
+    "declarationDir": "./dist/types",
+    // 模块解析策略
+    "moduleResolution": "node",
+    // 允许导入 JSON 文件
+    "resolveJsonModule": true,
+    // 启用严格模式（建议开启，逐步修复错误）
+    "strict": false,
+    // 类型声明文件搜索目录
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    // 忽略 TypeScript 6.0 的弃用警告
+    "ignoreDeprecations": "6.0"
+  },
+  // 需要编译的文件（或排除不需要的文件）
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
