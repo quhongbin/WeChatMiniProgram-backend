@@ -1,11 +1,11 @@
-const { Sequelize } = require('sequelize');
-require('dotenv').config();
+import Sequelize from 'sequelize'
+// require('dotenv').config();
 
 // 创建 Sequelize 实例连接 MariaDB
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'Posts',      // 数据库名
-  process.env.DB_USER || 'root',       // 用户名
-  process.env.DB_PASS || 'password',   // 密码
+  process.env.DB_NAME || 'WeChat_Posts',      // 数据库名
+  process.env.DB_USER || 'admin',       // 用户名
+  process.env.DB_PASS || 'admin',   // 密码
   {
     host: process.env.DB_HOST || 'localhost',
     port: process.env.DB_PORT || 3306,
@@ -26,17 +26,7 @@ const sequelize = new Sequelize(
 
 
 // 测试连接
-// Sequelize.prototype.testConnection = function(){
-//     try {
-//         await sequelize.authenticate();
-//         console.log('✅ MariaDB 连接成功');
-//         return 0
-//     } catch (error) {
-//         console.error('❌ 无法连接到 MariaDB:', error);
-//         return 1
-//     }
-// }
-const testConnection = async () => {
+Sequelize.prototype.testConnection = async function(){
     try {
         await sequelize.authenticate();
         console.log('✅ MariaDB 连接成功');
@@ -45,6 +35,16 @@ const testConnection = async () => {
         console.error('❌ 无法连接到 MariaDB:', error);
         return 1
     }
-};
-
-module.exports = { sequelize, testConnection };
+}
+// const testConnection = async () => {
+//     try {
+//         await sequelize.authenticate();
+//         console.log('✅ MariaDB 连接成功');
+//         return 0
+//     } catch (error) {
+//         console.error('❌ 无法连接到 MariaDB:', error);
+//         return 1
+//     }
+// };
+// testConnection()
+export default sequelize ;

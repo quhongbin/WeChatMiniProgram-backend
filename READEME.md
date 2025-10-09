@@ -43,7 +43,11 @@ public/
 
 ## Posts表
 
-| 字段    | 类型          | 是否为空 | 描述         |
-| ----- | ----------- | ---- | ---------- |
-| id    | int         | 否    | 自增，文章唯一标识符 |
-| title | varchar(10) | 否    | 文章标题       |
+| 字段                   | 类型          | 是否为空 | 描述         |
+| -------------------- | ----------- | ---- | ---------- |
+| id                   | int         | 否    | 自增，文章唯一标识符 |
+| title                | varchar(10) | 否    | 文章标题       |
+| porprotation_content | varchar     | 否    | 关键内容       |
+| updated_at           | timestamp   | 否    | 更新时间戳      |
+| created_at           | timestamp   | 否    | 创建时间戳      |
+| deleted_at           | timestamp   | 否    | 删除时间戳      |

@@ -1,5 +1,9 @@
 {
   "name": "zhinongzhushou",
+  "type": "module",
+  "exports":{
+    "@/*": "./node_modules/*"
+  },
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
