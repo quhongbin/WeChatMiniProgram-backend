@@ -1,6 +1,6 @@
-const User = require('../models/User');
+import User from '../models/User.js'
 
-exports.getAllUsers = async (req, res) => {
+export async function getAllUsers (req, res) {
   try {
     const users = await User.find();
     res.json({
@@ -17,7 +17,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-exports.createUser = async (req, res) => {
+export async function createUser(req, res){
   try {
     const { name, email, age } = req.body;
     const user = new User({ name, email, age });
@@ -36,3 +36,13 @@ exports.createUser = async (req, res) => {
     });
   }
 };
+
+export async function deleteUser(params) {
+  
+}
+export async function getUserById(params) {
+  
+}
+export async function updateUser(params) {
+  
+}

@@ -1,5 +1,5 @@
 // JWT 认证中间件
-exports.authenticateToken = (req, res, next) => {
+export function authenticateToken (req, res, next){
   const token = req.header('Authorization')?.replace('Bearer ', '');
   
   if (!token) {
@@ -22,7 +22,7 @@ exports.authenticateToken = (req, res, next) => {
 };
 
 // 日志中间件
-exports.requestLogger = (req, res, next) => {
+export function requestLogger (req, res, next) {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
   next();
 };

@@ -30,7 +30,6 @@ async function getAdminUser(req,res){
 }
 
 
-User.create({user_name:"qu",user_passwd:"hb"})
 
 
 

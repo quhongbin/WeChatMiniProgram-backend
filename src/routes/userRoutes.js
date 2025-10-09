@@ -1,13 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controllers/userController');
+import { Router } from 'express';
+const router = Router();
+import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from '../controllers/userController.js';
 
 // 定义用户相关路由
-router.get('/users', userController.getAllUsers);
-router.get('/users/:id', userController.getUserById);
-router.post('/users', userController.createUser);
-router.put('/users/:id', userController.updateUser);
-router.delete('/users/:id', userController.deleteUser);
-router.logion('/admin/manage',adminController)
+router.get('/users', getAllUsers);
+router.get('/users/:id', getUserById);
+router.post('/users', createUser);
+router.put('/users/:id', updateUser);
+router.delete('/users/:id', deleteUser);
+// router.logion('/admin/manage',adminController)
 
-module.exports = router;
+export default router;
