@@ -1,5 +1,6 @@
 import DataTypes  from 'sequelize';
 import sequelize  from '../config/database.js';
+import { type } from 'os';
 
 // 定义 User 模型
 const User = sequelize.define('Users', {
@@ -25,6 +26,30 @@ const User = sequelize.define('Users', {
     type: DataTypes.STRING(255),
     allowNull: false
   },
+  user_email:{
+    type:DataTypes.STRING(20),
+    allowNull: false,
+    validate: {
+      isEmail: {
+        msg: '请输入正确的邮箱格式'
+      }
+    }
+  },
+  user_status:{
+    type:DataTypes.STRING(10),
+    allowNull: false,
+    defaultValue: 'activ'
+  },
+  user_role:{
+    type:DataTypes.STRING(10),
+    allowNull: false,
+    defaultValue: 'user'
+  },
+  last_login:{
+    type:DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  }
 }, {
   freezeTableName: true,
   timestamps: true,   // 自动添加 createdAt 和 updatedAt
@@ -53,5 +78,15 @@ User.getActiveUsers = function() {
     order: [['createdAt', 'DESC']]
   });
 };
+for (let i = 0; i < 10; i++) {
+  User.create({
+    user_name: `测试用户${i}`,
+    user_passwd: '123456',
+    user_email: `test${i}@example.com`,
+    user_status: 'active',
+    user_role: 'user',
+  })
+}
 User.sync({alter:true})
+
 export default  User ;

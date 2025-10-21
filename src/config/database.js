@@ -3,11 +3,11 @@ import Sequelize from 'sequelize'
 
 // 创建 Sequelize 实例连接 MariaDB
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'WeChat_Posts',      // 数据库名
+  process.env.DB_NAME || 'zhinong_manage',      // 数据库名
   process.env.DB_USER || 'admin',       // 用户名
   process.env.DB_PASS || 'admin',   // 密码
   {
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || '127.0.0.1',
     port: process.env.DB_PORT || 3306,
     dialect: 'mariadb', // 或者 'mariadb'
     logging: process.env.NODE_ENV === 'development' ? console.log : false,

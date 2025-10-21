@@ -12,7 +12,7 @@ express-project/
 ├── package.json          # 项目依赖配置
 └── README.md             # 项目说明
 
-管理界面使用vue+tailwind
+管理界面使用vue3+tailwindcss
 技术栈nodejs+express  du1mam9m
 
 routes/

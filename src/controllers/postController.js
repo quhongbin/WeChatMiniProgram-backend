@@ -22,6 +22,48 @@ export async function getAllPosts (req, res) {
     });
   }
 };
+//删除文章
+export async function deletePost (req, res) {
+  try {
+    const { id } = req.params;
+    await Post.destroy({
+      where: {
+        id: id
+      }
+    });
+    res.json({
+      success: true,
+      message: 'Post deleted successfully'
+    });
+  } catch (error) {
+    console.log(`error from deletePost :${error}`)
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting Post',
+      error: error.message
+    });
+  }
+};
+//获取文章数量
+export async function getPostsCounts (req, res) {
+  try {
+    const count = await Post.count();
+    res.json({
+      success: true,
+      data: count,
+      message: 'Posts count retrieved successfully'
+    });
+  } catch (error) {
+    console.log(`error from getPostsCounts :${error}`)
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching Posts count',
+      error: error.message
+    });
+  }
+};
+
+
 
 // async function createPost (req, res) {
 // };

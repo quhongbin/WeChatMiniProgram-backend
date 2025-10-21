@@ -2,6 +2,18 @@ import _express from 'express';
 const {express , json, urlencoded} = _express 
 import { join,dirname } from 'path';
 import { fileURLToPath } from 'url';
+import _cors from 'cors'
+
+
+/**
+ * @description: 跨域配置(开发环境)
+ * @return {*}
+ */
+const cors = _cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+})
 
 // 获取当前模块的文件路径（替代 __filename）
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +33,7 @@ const PORT = process.env.PORT || 3000;
 
 // 中间件配置
 app.use(json());
+app.use(cors)
 app.use(urlencoded({ extended: true }));
 // app.use(join(__dirname, 'public'));
 // app.use(requestLogger());
