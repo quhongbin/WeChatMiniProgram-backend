@@ -1,6 +1,7 @@
 import { json, JSON } from 'sequelize';
 import Post from '../models/Post.js';
-
+import fs from 'fs'
+import path from 'path'
 
 //返回给前端的功能
 export async function getAllPosts (req, res) {
@@ -82,12 +83,26 @@ function printObject(obj, prefix = "") {
     }
   }
 }
-// getAllPosts()
-// const posts=getAllPosts()
-// posts.then((res)=>{
-//   printObject(res)
-// }).catch((error)=>{
-//   console.log(`posts errors:${error}`)
-// })
 
-//获取posts文章数据，并处理为json数据格式，返回给前端
+export async function createPost (req, res) {
+  try {
+    const { title,tags } = req.body;
+    const file = req.file;
+    const post = await Post.create({
+      title:title,
+      tags:tags,
+      file_path:path.resolve(file.path)
+    });
+    res.json({
+      success: true,
+      message: 'Post created successfully'
+    });
+  } catch (error) {
+    console.log(`error from createPost :${error}`)
+    res.status(500).json({
+      success: false,
+      message: 'Error creating Post',
+      error: error.message
+    });
+  }
+}
