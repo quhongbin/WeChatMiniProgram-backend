@@ -55,7 +55,7 @@ export async function createUser(req, res){
     
     const user = new User({ 
       user_name: name, 
-      user_password: defaultPassword,
+      user_passwd: defaultPassword,
       user_email: email, 
       user_status: status, 
       user_role: role 
