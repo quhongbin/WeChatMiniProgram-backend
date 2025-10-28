@@ -79,15 +79,15 @@ User.getActiveUsers = function() {
   });
 };
 
-for (let i = 0; i < 10; i++) {
-  User.create({
-    user_name: `测试用户${i}`,
-    user_passwd: '123456',
-    user_email: `test${i}@example.com`,
-    user_status: 'active',
-    user_role: 'admin',
-  })
-}
+// for (let i = 0; i < 10; i++) {
+//   User.create({
+//     user_name: `测试用户${i}`,
+//     user_passwd: '123456',
+//     user_email: `test${i}@example.com`,
+//     user_status: 'active',
+//     user_role: 'admin',
+//   })
+// }
 User.sync({alter:true})
 
 export default  User ;
