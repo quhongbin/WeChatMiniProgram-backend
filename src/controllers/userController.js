@@ -142,8 +142,8 @@ export async function getUserById(req, res) {
  */
 export async function updateUser(req, res) {
   try {
-    const { id } = req.params;
-    const { name, email, age } = req.body;
+    const { id,username, email, role } = req.body;
+    
     const user = await User.findByPk(id);
     if (!user) {
       return res.status(404).json({
@@ -151,9 +151,9 @@ export async function updateUser(req, res) {
         message: 'User not found'
       });
     }
-    user.name = name || user.name;
-    user.email = email || user.email;
-    user.age = age || user.age;
+    user.user_name = username || user.user_name;
+    user.user_email = email || user.user_email;
+    user.user_role = role || user.user_role;
     await user.save();
     res.json({
       success: true,
